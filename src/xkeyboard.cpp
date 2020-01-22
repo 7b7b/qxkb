@@ -94,8 +94,6 @@ int XKeyboard::getGroupNo()
 	return (int) rec.group;
 }
 
-
-
 void XKeyboard::retrieveNumKbdGroups()
 {
 	XkbDescRec xkb;
@@ -110,7 +108,6 @@ void XKeyboard::retrieveNumKbdGroups()
 	m_numgroups = xkb.ctrls->num_groups;
 	XkbFreeControls(&xkb, XkbGroupsWrapMask, 1);
 }
-
 
 /** Examines an X Event passed to it and takes actions if the event is of
   * interest to XKeyboard */
@@ -129,7 +126,5 @@ void XKeyboard::processEvent(XEvent *ev)
 			retrieveNumKbdGroups();
 			emit layoutChanged();
 		}
-
 	}
 }
-

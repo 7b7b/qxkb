@@ -40,6 +40,7 @@ include_directories(
 
 set (QXKB_SOURCES
         src/qxkb.cpp
+        src/xkbt.cpp
         src/xkeyboard.cpp
         src/xkbconf.cpp
         src/x11tools.cpp
@@ -50,6 +51,7 @@ set (QXKB_SOURCES
 
 set (QXKB_MOCS
         src/qxkb.h
+        src/xkbt.h
         src/xkeyboard.h
         src/xkbconf.h
         #src/x11tools.h

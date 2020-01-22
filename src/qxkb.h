@@ -38,11 +38,6 @@ class QXKB : public QApplication
 {
 	Q_OBJECT
 
-
-protected:
-	virtual bool x11EventFilter(XEvent *);
-
-
 public:
 	QXKB(int &argc, char **argv);
 	~QXKB();
@@ -57,6 +52,7 @@ public slots:
 	void setNextGroupe();
 	void setPrevGroupe();
 	void trayClicked(QSystemTrayIcon::ActivationReason reason);
+	void xkbChanged(XEvent *ev);
 
 protected slots:
 	void reconfigure();

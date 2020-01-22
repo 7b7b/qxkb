@@ -49,6 +49,9 @@
 #include <QX11Info>
 #include <QDesktopWidget>
 #include <QDebug>
+#include <QRunnable>
+#include <QThreadPool>
+#include <QThread>
 #include <QProcess>
 #include <QDir>
 #include <QDirIterator>

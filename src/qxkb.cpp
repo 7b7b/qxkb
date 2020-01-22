@@ -123,6 +123,13 @@ void QXKB::setStartup()
 
 }
 
+void QXKB::xkbChanged(XEvent *ev)
+{
+    updateAppsLanglist();
+    cheklanguage();
+    keys->processEvent(ev);
+}
+
 QXKB::~QXKB()
 {
 	if (keys)
@@ -154,24 +161,6 @@ bool QXKB::firstStart()
 		qxkb.setValue("path",map_path);
 		qxkb.endGroup(); //Style
 		return true;
-	}
-	return false;
-}
-
-
-bool QXKB::x11EventFilter(XEvent *event)
-{
-	switch (((XKeyEvent *)event)->type) {
-
-	default:
-		//note: Can't get correctly events from xserver. So that we look
-		// all events and check windows lists and active windows
-		// if some change we update windows list and language
-		updateAppsLanglist();
-		cheklanguage();
-		keys->processEvent(event);
-
-		return false;
 	}
 	return false;
 }
@@ -208,7 +197,6 @@ int QXKB::getLayoutNumber()
 	return (int)rec.group;
 }
 
-
 void QXKB::showClipboard()
 {
 	selectedString= clipboard->text(QClipboard::Selection);
@@ -216,7 +204,6 @@ void QXKB::showClipboard()
 	qDebug()<<"Current selection: "<< selectedString;
 
 }
-
 
 void QXKB::draw_icon()
 {
@@ -306,7 +293,6 @@ void QXKB::groupChange(int index)
 	else if (currentGroup == groupeName.size()-1)
 		nextGroupe = 0;
 	draw_icon();
-
 }
 
 int QXKB::setKeyLayout(QString keyConf)
@@ -444,16 +430,16 @@ void  QXKB::set_xkb()
 
 int QXKB::setDelayInput(int delay, int repeat)
 {
- qDebug()  << " QXKB:Set delay";
- QStringList argument;
- argument.append("r");
- argument.append("rate");
- argument.append(QString::number(delay));
- argument.append(QString::number(repeat));
-  qDebug()  << " QXKB:xset argument : " << argument;
- int result = QProcess::execute("xset",argument);
- qDebug()  << " QXKB:xset result : " << result;
- return result;
+	qDebug()  << " QXKB:Set delay";
+	QStringList argument;
+	argument.append("r");
+	argument.append("rate");
+	argument.append(QString::number(delay));
+	argument.append(QString::number(repeat));
+	qDebug()  << " QXKB:xset argument : " << argument;
+	int result = QProcess::execute("xset",argument);
+	qDebug()  << " QXKB:xset result : " << result;
+	return result;
 }
 
 void QXKB::actionsActivate(QAction * action)
@@ -476,6 +462,7 @@ void QXKB::actionsActivate(QAction * action)
 		exit(0);
 	} else {
 		keys->setGroupNo(groupeName.indexOf(cmd));
+		groupChange(groupeName.indexOf(cmd));
 	}
 }
 
@@ -488,7 +475,6 @@ void  QXKB::configure()
 	}
 	xkbconf->exec();
 }
-
 
 bool QXKB::load_rules()
 {

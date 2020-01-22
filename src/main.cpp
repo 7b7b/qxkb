@@ -18,6 +18,7 @@
 
 #include "defs.h"
 #include "qxkb.h"
+#include "xkbt.h"
 
 
 void myMessageOutput(QtMsgType type, const char *msg)
@@ -119,6 +120,11 @@ int main(int argc, char *argv[])
 {
 	//qInstallMsgHandler(myMessageOutput);
 	QXKB a(argc, argv);
+    XKBt event;
+    QThreadPool *threadPool = QThreadPool::globalInstance();
+    threadPool->start(&event);
+
+    QObject::connect(&event,&XKBt::xkbSignal,&a,&QXKB::xkbChanged);
 
 	QTranslator translator;
 	qDebug() << "Locale:" << QLocale::system().name();
