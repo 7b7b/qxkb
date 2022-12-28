@@ -51,7 +51,7 @@ static QList<QString> getKeysSortedByVaue(const QHash<QString, QString>& map)
 	reverseMap.insert(fmt.arg(map[str], QString::number(i++)), str);
 
 	QList<QString> values = reverseMap.keys();
-	qSort(values.begin(), values.end(), localeAwareLessThan);
+	std::sort(values.begin(), values.end(), localeAwareLessThan);
 
 	foreach (const QString& value, values)
 	outList << reverseMap[value];

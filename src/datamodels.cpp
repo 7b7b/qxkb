@@ -19,7 +19,6 @@
 
 #include "datamodels.h"
 
-
 QVariant SrcLayoutModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
 	if (role != Qt::DisplayRole)
@@ -223,7 +222,7 @@ QModelIndex XkbOptionsModel::index(int row, int column, const QModelIndex& paren
 Qt::ItemFlags XkbOptionsModel::flags ( const QModelIndex & index ) const
 {
 	if( ! index.isValid() )
-		return 0;
+		return QFlag(0);
 
 	if( !index.parent().isValid() )
 		return Qt::ItemIsEnabled;

@@ -28,7 +28,7 @@ QXKB::QXKB(int &argc, char **argv) : QApplication(argc, argv),
 	setQuitOnLastWindowClosed(false);
 	keys = new XKeyboard ();
 	set_event_names();
-	setWindowIcon(QIcon(":/about/qxkb.png"));
+	setWindowIcon(QIcon::fromTheme("keyboard"));
 
 }
 

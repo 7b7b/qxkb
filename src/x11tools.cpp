@@ -641,8 +641,7 @@ QString X11tools::getActiveWindowAppName(Window windowsId)
 	}
 	QString win_name = QString((char*)list);
 	if (win_name.isEmpty() || win_name.isNull())  win_name="NONE";
-	win_name.trimmed();
-	return win_name;
+	return win_name.trimmed();
 }
 
 

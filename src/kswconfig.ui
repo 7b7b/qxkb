@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>684</width>
-    <height>448</height>
+    <width>745</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -206,6 +206,10 @@
                     <property name="text">
                      <string>...</string>
                     </property>
+                    <property name="icon">
+                     <iconset theme="go-previous">
+                      <normaloff>.</normaloff>.</iconset>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -242,6 +246,10 @@
                    <widget class="QToolButton" name="btnAdd">
                     <property name="text">
                      <string>...</string>
+                    </property>
+                    <property name="icon">
+                     <iconset theme="go-next">
+                      <normaloff>.</normaloff>.</iconset>
                     </property>
                    </widget>
                   </item>
@@ -300,6 +308,10 @@
                       <property name="text">
                        <string>...</string>
                       </property>
+                      <property name="icon">
+                       <iconset theme="go-up">
+                        <normaloff>.</normaloff>.</iconset>
+                      </property>
                      </widget>
                     </item>
                     <item>
@@ -319,6 +331,10 @@
                      <widget class="QToolButton" name="btnDown">
                       <property name="text">
                        <string>...</string>
+                      </property>
+                      <property name="icon">
+                       <iconset theme="go-down">
+                        <normaloff>.</normaloff>.</iconset>
                       </property>
                      </widget>
                     </item>
@@ -432,7 +448,7 @@
                <bool>true</bool>
               </property>
               <property name="title">
-               <string>Switshing policy</string>
+               <string>Switching policy</string>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_4">
                <item>
